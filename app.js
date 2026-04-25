@@ -40,6 +40,86 @@ function switchView(name) {
   if (navBtn) navBtn.classList.add('active');
   if (name === 'study') renderQuestions();
   if (name === 'stats') renderStats();
+  if (name === 'cantinho') renderCantinho();
+  window.scrollTo(0, 0);
+}
+
+// ============= CANTINHO DE ESTUDOS =============
+function renderCantinho() {
+  const grid = document.getElementById('cantinhoGrid');
+  const detail = document.getElementById('cantinhoDetail');
+  detail.style.display = 'none';
+  grid.style.display = 'grid';
+  grid.innerHTML = '';
+  if (typeof STUDY_CONTENT === 'undefined') return;
+
+  Object.keys(STUDY_CONTENT).forEach(key => {
+    const m = STUDY_CONTENT[key];
+    const card = document.createElement('div');
+    card.className = 'cantinho-card';
+    card.style.borderTopColor = m.color;
+    card.innerHTML = `
+      <div class="cc-icon" style="background:${m.color}20;color:${m.color}">${m.icon}</div>
+      <h3>${m.name}</h3>
+      <p>${m.teoria.length} tópicos · ${m.youtube.length} vídeos · ${m.macetes.length} macetes</p>
+      <button class="cc-btn">Abrir</button>
+    `;
+    card.addEventListener('click', () => renderCantinhoDetail(key));
+    grid.appendChild(card);
+  });
+}
+
+function renderCantinhoDetail(key) {
+  const m = STUDY_CONTENT[key];
+  const grid = document.getElementById('cantinhoGrid');
+  const detail = document.getElementById('cantinhoDetail');
+  grid.style.display = 'none';
+  detail.style.display = 'block';
+
+  const raioX = m.topFreq.map(t => `
+    <div class="raiox-row">
+      <div class="raiox-label">${t.topic}</div>
+      <div class="raiox-bar"><div class="raiox-fill" style="width:${t.freq}%;background:${m.color}"></div></div>
+      <div class="raiox-freq">${t.freq}% · ${t.vezes}</div>
+    </div>
+  `).join('');
+
+  const teoria = m.teoria.map(t => `
+    <div class="teoria-card">
+      <h4>${escapeHtml(t.titulo)}</h4>
+      <pre class="formula">${escapeHtml(t.formulas)}</pre>
+      <p><strong>Exemplo:</strong> ${escapeHtml(t.exemplo)}</p>
+      <p class="macete-line">💡 ${escapeHtml(t.macete)}</p>
+    </div>
+  `).join('');
+
+  const macetes = m.macetes.map(mc => `<li>${escapeHtml(mc)}</li>`).join('');
+
+  const yt = m.youtube.map(v => `
+    <a class="yt-link" target="_blank" href="https://www.youtube.com/results?search_query=${encodeURIComponent(v.q)}">
+      ▶️ ${escapeHtml(v.titulo)}
+    </a>
+  `).join('');
+
+  detail.innerHTML = `
+    <button class="cc-back" id="ccBack">← Voltar</button>
+    <div class="cc-detail-header" style="background:${m.color}15;border-left:6px solid ${m.color}">
+      <h2>${m.icon} ${m.name}</h2>
+    </div>
+
+    <h3 class="cc-section-title">📊 Raio-X — o que mais cai</h3>
+    <div class="raiox">${raioX}</div>
+
+    <h3 class="cc-section-title">📖 Teoria essencial</h3>
+    <div class="teoria-grid">${teoria}</div>
+
+    <h3 class="cc-section-title">🎯 Macetes da Vunesp</h3>
+    <ul class="macetes-list">${macetes}</ul>
+
+    <h3 class="cc-section-title">▶️ Vídeos no YouTube</h3>
+    <div class="yt-grid">${yt}</div>
+  `;
+  document.getElementById('ccBack').addEventListener('click', renderCantinho);
   window.scrollTo(0, 0);
 }
 

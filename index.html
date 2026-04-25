@@ -15,6 +15,7 @@
     </div>
     <nav>
       <button class="nav-btn active" data-view="home">Início</button>
+      <button class="nav-btn" data-view="cantinho">📚 Cantinho</button>
       <button class="nav-btn" data-view="study">Estudar</button>
       <button class="nav-btn" data-view="simulado">Simulado</button>
       <button class="nav-btn" data-view="stats">Progresso</button>
@@ -24,6 +25,11 @@
 </header>
 
 <main>
+
+<!-- VÉSPERA BANNER -->
+<div class="vespera-banner">
+  ⚠️ <strong>Prova é AMANHÃ (26/04/2026)!</strong> Foque no <a href="#" data-go="cantinho">Cantinho de Estudos</a> pra revisão de véspera. Boa sorte! 🍀
+</div>
 
 <!-- HOME -->
 <section id="home" class="view active">
@@ -83,6 +89,33 @@
       <li><strong>Redação vale muito.</strong> Treine 1 redação por semana. Estrutura: tese → 2 argumentos → proposta de intervenção.</li>
     </ul>
   </div>
+</section>
+
+<!-- CANTINHO DE ESTUDOS -->
+<section id="cantinho" class="view">
+  <div class="cantinho-header">
+    <h2>📚 Cantinho de Estudos</h2>
+    <p>Teoria condensada, fórmulas, macetes da Vunesp e vídeos do YouTube — tudo organizado por matéria. Use o <strong>Raio-X</strong> pra ver o que mais cai.</p>
+  </div>
+
+  <div class="cantinho-vespera">
+    <h3>🚨 Revisão de Véspera (prova é amanhã!)</h3>
+    <ul>
+      <li><strong>Matemática:</strong> revise PA/PG (aₙ=a₁+(n-1)r), probabilidade complementar, áreas/volumes (cubo 6a², esfera 4πr²/3).</li>
+      <li><strong>Português:</strong> figuras de linguagem, regência (assistir A, preferir A...A), concordância.</li>
+      <li><strong>Inglês:</strong> leia em voz alta, busque cognatos, foque em IDEIA do texto, não tradução palavra-a-palavra.</li>
+      <li><strong>Física:</strong> MUV (S=S₀+v₀t+at²/2), Ohm (U=Ri), Q=mcΔt e Q=mL.</li>
+      <li><strong>Química:</strong> tabela periódica, balanceamento, ácido/base (pH), mol (6,02·10²³).</li>
+      <li><strong>Biologia:</strong> ecossistema (níveis tróficos), genética (1ª/2ª lei Mendel), citologia.</li>
+      <li><strong>História:</strong> Era Vargas, Ditadura Militar, redemocratização, atualidades.</li>
+      <li><strong>Geografia:</strong> globalização, urbanização, climas brasileiros, geopolítica.</li>
+    </ul>
+    <p class="vespera-final">💡 <strong>Última dica:</strong> durma cedo, hidrate-se, leia o enunciado 2x. Você consegue!</p>
+  </div>
+
+  <div class="cantinho-grid" id="cantinhoGrid"></div>
+
+  <div id="cantinhoDetail" style="display:none;"></div>
 </section>
 
 <!-- STUDY -->
@@ -246,6 +279,7 @@
 </footer>
 
 <script src="questions.js"></script>
+<script src="study.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
