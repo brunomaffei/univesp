@@ -137,6 +137,57 @@ const STUDY_CONTENT = {
       '🎯 Em literatura, foque em palavras-chave do enunciado: "racional/natural" = arcadismo, "sentimento" = romantismo.',
       '🎯 Conectivos: a palavra-chave do conectivo dá a relação. "Mas" = oposição, "logo" = consequência, etc.'
     ],
+    exemplos: [
+      {
+        tipo: 'Figura de Linguagem',
+        texto: '"Minha casa contaria histórias sobre mim... ela viu meus dias de quarentena e silenciou junto."',
+        pergunta: 'Que figura de linguagem aparece em "minha casa contaria histórias"?',
+        alternativas: ['Metáfora', 'Personificação (prosopopeia)', 'Hipérbole', 'Eufemismo'],
+        resposta: 'B — Personificação. Atribuir o ato HUMANO de "contar histórias" a um objeto (a casa) é prosopopeia. Vunesp adora.'
+      },
+      {
+        tipo: 'Modo Verbal (imperativo)',
+        texto: 'Tirinha — Q4: "Nem me fale! Se a quarentena não acabar logo vou ficar maluca!"',
+        pergunta: 'O verbo destacado em "Nem me fale!" está em qual modo?',
+        alternativas: ['Indicativo', 'Subjuntivo', 'Imperativo', 'Infinitivo'],
+        resposta: 'C — Imperativo. É uma ordem/pedido enfático. O imperativo negativo costuma vir com "não" ou "nem".'
+      },
+      {
+        tipo: 'Referente do pronome',
+        texto: '"O ensino remoto chegou para ficar. Ele transformou a relação entre professor e aluno."',
+        pergunta: 'O pronome "Ele" retoma:',
+        alternativas: ['professor', 'aluno', 'O ensino remoto', 'a relação'],
+        resposta: 'C — "O ensino remoto". Regra: o pronome retoma o substantivo IMEDIATAMENTE anterior compatível em gênero/número.'
+      },
+      {
+        tipo: 'Conectivo',
+        texto: '"A internet democratizou o conhecimento; ___, expôs também desigualdades históricas."',
+        pergunta: 'Qual conectivo cabe na lacuna?',
+        alternativas: ['portanto', 'contudo', 'além disso', 'porque'],
+        resposta: 'B — "contudo" (oposição). Há contraste entre democratizar (positivo) e expor desigualdades (negativo).'
+      },
+      {
+        tipo: 'Função da Linguagem',
+        texto: '"Compre já! Aproveite a promoção e leve o seu hoje mesmo!"',
+        pergunta: 'Qual função da linguagem predomina?',
+        alternativas: ['Referencial', 'Conativa (apelativa)', 'Poética', 'Fática'],
+        resposta: 'B — Conativa. Verbos no imperativo + foco no receptor (você, leitor) = apelo, típico de propaganda.'
+      },
+      {
+        tipo: 'Literatura',
+        texto: '"Ó natureza! Em teu seio quero viver, longe das vaidades da corte e do ouro vão." (verso pastoril, séc. XVIII)',
+        pergunta: 'A qual movimento literário esses versos pertencem?',
+        alternativas: ['Barroco', 'Arcadismo', 'Romantismo', 'Realismo'],
+        resposta: 'B — Arcadismo. Pastoralismo + "fugere urbem" (fugir da cidade) + valorização da natureza = marca do Arcadismo.'
+      },
+      {
+        tipo: 'Interpretação',
+        texto: '"A pandemia escancarou desigualdades já existentes: 43% dos lares urbanos têm computador, contra 18% nos rurais."',
+        pergunta: 'O verbo "escancarou" sugere que a pandemia:',
+        alternativas: ['criou as desigualdades', 'reduziu as desigualdades', 'tornou visíveis desigualdades que já existiam', 'eliminou o problema rural'],
+        resposta: 'C — "Escancarar" = expor de forma evidente. As desigualdades JÁ existiam; a pandemia só as tornou mais visíveis.'
+      }
+    ],
     youtube: [
       { titulo: 'Figuras de linguagem — Pablo Jamilk', q: 'figuras de linguagem pablo jamilk' },
       { titulo: 'Interpretação de texto — Português com Letícia', q: 'interpretação de texto português com letícia' },

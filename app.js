@@ -95,6 +95,19 @@ function renderCantinhoDetail(key) {
 
   const macetes = m.macetes.map(mc => `<li>${escapeHtml(mc)}</li>`).join('');
 
+  const exemplos = (m.exemplos || []).map((e, i) => `
+    <details class="exemplo-card">
+      <summary><span class="exemplo-tipo">${escapeHtml(e.tipo)}</span> ${escapeHtml(e.pergunta)}</summary>
+      <div class="exemplo-body">
+        <div class="exemplo-texto">${escapeHtml(e.texto)}</div>
+        <ol class="exemplo-alts" type="A">
+          ${e.alternativas.map(a => `<li>${escapeHtml(a)}</li>`).join('')}
+        </ol>
+        <div class="exemplo-resposta"><strong>✅ Resposta:</strong> ${escapeHtml(e.resposta)}</div>
+      </div>
+    </details>
+  `).join('');
+
   const yt = m.youtube.map(v => `
     <a class="yt-link" target="_blank" href="https://www.youtube.com/results?search_query=${encodeURIComponent(v.q)}">
       ▶️ ${escapeHtml(v.titulo)}
@@ -115,6 +128,8 @@ function renderCantinhoDetail(key) {
 
     <h3 class="cc-section-title">🎯 Macetes da Vunesp</h3>
     <ul class="macetes-list">${macetes}</ul>
+
+    ${exemplos ? `<h3 class="cc-section-title">📝 Exemplos do que cai (modelo Vunesp)</h3><div class="exemplos-grid">${exemplos}</div>` : ''}
 
     <h3 class="cc-section-title">▶️ Vídeos no YouTube</h3>
     <div class="yt-grid">${yt}</div>

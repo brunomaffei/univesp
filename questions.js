@@ -69,6 +69,7 @@ const QUESTIONS = [
   },
   {
     n: 9, topic: 'portugues', topicName: 'Português',
+    image: '[Tirinha de Pietro Soldi (mesma da questão 8): Q1 – "Que histórias minha casa contaria sobre mim..." | Q2 – "...as risadas, as conversas..." | Q3 – campainha toca: TRIM! | Q4 – mulher atende: "Nem me fale! Se a quarentena não acabar logo vou ficar maluca!"]',
     statement: 'Observa-se o emprego de verbo no modo imperativo na tirinha',
     options: [
       'no primeiro quadrinho, apenas',
