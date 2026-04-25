@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNIVESP 2026 - Treino Vestibular | Eixo de Computação</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-mark">UNI<span class="v">V</span>ESP</span>
+      <span class="logo-sub">Treino Vestibular 2026 · Eixo de Computação</span>
+    </div>
+    <nav>
+      <button class="nav-btn active" data-view="home">Início</button>
+      <button class="nav-btn" data-view="study">Estudar</button>
+      <button class="nav-btn" data-view="simulado">Simulado</button>
+      <button class="nav-btn" data-view="stats">Progresso</button>
+      <button class="nav-btn" data-view="redacao">Redação</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- HOME -->
+<section id="home" class="view active">
+  <div class="hero">
+    <h1>Bora passar na <span class="highlight">UNIVESP 2026</span>?</h1>
+    <p class="hero-sub">Treine com a prova oficial do Eixo de Computação 2021 (Bacharel em TI, Ciência de Dados e Engenharia da Computação). 56 questões objetivas + redação, com explicações detalhadas pra você entender de verdade.</p>
+    <div class="cta-row">
+      <button class="cta primary" data-go="study">Começar a Estudar</button>
+      <button class="cta secondary" data-go="simulado">Fazer Simulado (5h)</button>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">📚</div>
+      <h3>Modo Estudo</h3>
+      <p>Veja o gabarito e a explicação imediatamente após responder. Filtre por matéria pra focar no que está fraco.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⏱️</div>
+      <h3>Modo Simulado</h3>
+      <p>Cronômetro de 5 horas, 56 questões, igual prova real. Veja seu desempenho no final por matéria.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <h3>Progresso</h3>
+      <p>Acompanhe seu acerto por matéria, identifique fraquezas e veja sua evolução. Tudo salvo no navegador.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✍️</div>
+      <h3>Redação</h3>
+      <p>Tema oficial da prova com guia de estrutura dissertativo-argumentativa, conectivos e repertório.</p>
+    </div>
+  </div>
+
+  <div class="topics">
+    <h2>Matérias da prova</h2>
+    <div class="topic-grid">
+      <div class="topic" data-topic="matematica"><span>📐</span> Matemática <small>7 questões</small></div>
+      <div class="topic" data-topic="portugues"><span>📖</span> Português <small>7 questões</small></div>
+      <div class="topic" data-topic="ingles"><span>🇬🇧</span> Inglês <small>7 questões</small></div>
+      <div class="topic" data-topic="historia"><span>🏛️</span> História <small>7 questões</small></div>
+      <div class="topic" data-topic="geografia"><span>🌎</span> Geografia <small>7 questões</small></div>
+      <div class="topic" data-topic="quimica"><span>⚗️</span> Química <small>7 questões</small></div>
+      <div class="topic" data-topic="biologia"><span>🧬</span> Biologia <small>7 questões</small></div>
+      <div class="topic" data-topic="fisica"><span>⚛️</span> Física <small>7 questões</small></div>
+    </div>
+  </div>
+
+  <div class="study-tips">
+    <h2>Dicas pra ir bem na prova</h2>
+    <ul>
+      <li><strong>Leia o enunciado 2x.</strong> A maioria dos erros vem de não ler direito, não de não saber.</li>
+      <li><strong>Elimine alternativas absurdas primeiro.</strong> Sobram 2-3, e aí fica mais fácil decidir.</li>
+      <li><strong>Resolva 5-10 questões por dia</strong> e refaça as que errou no fim de semana.</li>
+      <li><strong>Faça pelo menos 1 simulado completo</strong> antes da prova pra acostumar com o ritmo de 5h.</li>
+      <li><strong>Redação vale muito.</strong> Treine 1 redação por semana. Estrutura: tese → 2 argumentos → proposta de intervenção.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- STUDY -->
+<section id="study" class="view">
+  <div class="study-controls">
+    <div class="filter-row">
+      <label>Filtrar por matéria:</label>
+      <select id="topicFilter">
+        <option value="all">Todas as matérias</option>
+        <option value="matematica">Matemática</option>
+        <option value="portugues">Português</option>
+        <option value="ingles">Inglês</option>
+        <option value="historia">História</option>
+        <option value="geografia">Geografia</option>
+        <option value="quimica">Química</option>
+        <option value="biologia">Biologia</option>
+        <option value="fisica">Física</option>
+      </select>
+      <label class="checkbox"><input type="checkbox" id="hideAnswered"> Esconder questões já acertadas</label>
+      <button class="reset-btn" id="resetProgress">Resetar progresso</button>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="studyProgress"></div>
+    </div>
+    <div class="progress-text"><span id="studyProgressText">0 de 56 respondidas</span> · <span id="studyAcerto">0% de acerto</span></div>
+  </div>
+  <div id="questionList"></div>
+</section>
+
+<!-- SIMULADO -->
+<section id="simulado" class="view">
+  <div id="simuladoIntro">
+    <h2>Simulado Oficial · 5 horas · 56 questões</h2>
+    <p>Reproduz as condições reais da prova UNIVESP. Não há feedback durante o simulado — só no final. Comece quando estiver pronto e em local tranquilo.</p>
+    <div class="sim-rules">
+      <h3>Regras</h3>
+      <ul>
+        <li>Cronômetro de 5 horas (300 min) começa quando você clicar em "Iniciar".</li>
+        <li>Você pode navegar entre questões e revisar antes de finalizar.</li>
+        <li>Questões em branco contam como erradas.</li>
+        <li>No fim, você vê o gabarito completo e o desempenho por matéria.</li>
+      </ul>
+    </div>
+    <button class="cta primary" id="startSim">Iniciar Simulado</button>
+  </div>
+
+  <div id="simuladoActive" style="display:none;">
+    <div class="sim-header">
+      <div class="sim-timer" id="simTimer">05:00:00</div>
+      <div class="sim-nav">
+        <button id="simPrev">← Anterior</button>
+        <span id="simCounter">1/56</span>
+        <button id="simNext">Próxima →</button>
+        <button class="finish-btn" id="simFinish">Finalizar</button>
+      </div>
+    </div>
+    <div class="sim-grid" id="simGrid"></div>
+    <div id="simQuestion"></div>
+  </div>
+
+  <div id="simuladoResult" style="display:none;"></div>
+</section>
+
+<!-- STATS -->
+<section id="stats" class="view">
+  <h2>Seu Progresso</h2>
+  <div id="statsContent"></div>
+</section>
+
+<!-- REDAÇÃO -->
+<section id="redacao" class="view">
+  <h2>Redação · Tema oficial 2021</h2>
+  <div class="redacao-tema">
+    <h3>Transformação Digital no Ensino Básico Brasileiro: entre a Modernização e as Desigualdades Sociais</h3>
+  </div>
+
+  <div class="redacao-textos">
+    <h3>📄 Textos motivadores</h3>
+    <details>
+      <summary><strong>Texto 1</strong> — Carolina Siequeroli (2021)</summary>
+      <p>A tecnologia impacta os mais diversos setores há anos e, cada vez mais, acompanhamos grandes avanços impulsionados pela transformação digital. O segmento de Educação experimentou essa evolução, especialmente, durante a pandemia de covid-19, que acelerou o processo de digitalização do método de ensino para muitas instituições...</p>
+      <p>É fato que, durante esse processo, todos tentaram, mas é preciso ir além. A educação remota não se limita à adaptação das aulas presenciais. É preciso repensar todo o modelo de educação. É clara a tendência de um modelo híbrido, capaz de combinar online e offline, para potencializar o aprendizado.</p>
+    </details>
+    <details>
+      <summary><strong>Texto 2</strong> — Todos pela Educação (2020)</summary>
+      <p><strong>Professores e a Tecnologia</strong></p>
+      <ul>
+        <li>76% buscaram recentemente formas para desenvolver/aprimorar conhecimentos</li>
+        <li>42% cursaram alguma disciplina sobre tecnologias na graduação</li>
+        <li>22% participaram de curso de formação continuada</li>
+        <li>67% alegaram necessidade de aperfeiçoamento profissional</li>
+      </ul>
+    </details>
+    <details>
+      <summary><strong>Texto 3</strong> — BBC, Paula Idoeta (2020)</summary>
+      <p>A pandemia acentuou desigualdades. Pesquisa Datafolha: falta de motivação dos jovens passou de 46% (maio) para 51% (julho).</p>
+      <p>TIC Domicílios 2019: 43% dos domicílios urbanos e 18% dos rurais tinham computador. Internet em casa: 75% urbanos vs 51% rurais. Segundo Ítalo Dutra (Unicef): "a falta de conectividade implica deixar as crianças mais vulneráveis para trás".</p>
+    </details>
+  </div>
+
+  <div class="redacao-guia">
+    <h3>🎯 Estrutura recomendada (modelo dissertativo-argumentativo)</h3>
+
+    <div class="estrutura">
+      <div class="paragrafo">
+        <h4>1️⃣ Introdução (4-6 linhas)</h4>
+        <p><strong>Estrutura:</strong> Contextualização → Tese</p>
+        <p><strong>Exemplo de início:</strong> "A pandemia de covid-19 escancarou um paradoxo da educação brasileira: ao mesmo tempo em que acelerou a transformação digital nas escolas, expôs o abismo entre alunos com acesso à tecnologia e aqueles que ficaram à margem do ensino remoto. Modernizar sem incluir é, portanto, aprofundar desigualdades históricas."</p>
+      </div>
+
+      <div class="paragrafo">
+        <h4>2️⃣ Desenvolvimento 1 (8-10 linhas)</h4>
+        <p><strong>Argumento:</strong> A modernização traz benefícios reais (flexibilidade, métodos ativos, estímulo a competências digitais).</p>
+        <p><strong>Repertório:</strong> Lei de Diretrizes e Bases (LDB), BNCC com competência de cultura digital, dados do TIC Domicílios.</p>
+      </div>
+
+      <div class="paragrafo">
+        <h4>3️⃣ Desenvolvimento 2 (8-10 linhas)</h4>
+        <p><strong>Argumento:</strong> A desigualdade de acesso (43% domicílios urbanos / 18% rurais com computador) transforma a tecnologia em mecanismo de exclusão.</p>
+        <p><strong>Repertório:</strong> Art. 205 da Constituição (educação como direito de todos), conceito de "exclusão digital", dados Unicef.</p>
+      </div>
+
+      <div class="paragrafo">
+        <h4>4️⃣ Conclusão com proposta de intervenção (5-7 linhas)</h4>
+        <p><strong>Estrutura ENEM-like:</strong> Agente + Ação + Modo + Finalidade + Detalhamento</p>
+        <p><strong>Exemplo:</strong> "Cabe ao Ministério da Educação (agente), em parceria com estados e municípios (parceiros), distribuir tablets com plano de dados (ação) a alunos da rede pública em situação de vulnerabilidade (público-alvo), por meio de financiamento via FUNDEB (meio), a fim de garantir que a transformação digital seja vetor de inclusão e não de exclusão (finalidade)."</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="conectivos">
+    <h3>🔗 Conectivos úteis</h3>
+    <table>
+      <tr><th>Função</th><th>Exemplos</th></tr>
+      <tr><td>Adição</td><td>ademais, outrossim, somado a isso, paralelamente</td></tr>
+      <tr><td>Oposição</td><td>entretanto, contudo, todavia, em contrapartida</td></tr>
+      <tr><td>Causa</td><td>visto que, dado que, uma vez que, em virtude de</td></tr>
+      <tr><td>Consequência</td><td>logo, portanto, por conseguinte, dessa forma</td></tr>
+      <tr><td>Exemplificação</td><td>a saber, isto é, conforme aponta, segundo</td></tr>
+    </table>
+  </div>
+
+  <div class="redacao-pratica">
+    <h3>✏️ Pratique aqui</h3>
+    <p>Escreva sua redação. Mínimo recomendado: 25 linhas (~250 palavras). O texto fica salvo no navegador.</p>
+    <textarea id="redacaoText" placeholder="Comece sua redação aqui..."></textarea>
+    <div class="redacao-meta">
+      <span id="wordCount">0 palavras</span>
+      <span id="lineCount">0 linhas estimadas</span>
+      <button id="saveRedacao">💾 Salvar</button>
+      <button id="clearRedacao">🗑️ Limpar</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>Site de treino baseado na prova oficial UNIVESP 2021 · Eixo de Computação · Vunesp</p>
+  <p>Bons estudos! 💪 Vai dar certo na prova de 2026.</p>
+</footer>
+
+<script src="questions.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
